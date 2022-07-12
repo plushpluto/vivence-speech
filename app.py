@@ -404,7 +404,6 @@ def main():
         st.subheader("Theory")
         link = '[Theory behind - Medium article]' \
                '(https://talbaram3192.medium.com/classifying-emotions-using-audio-recordings-and-python-434e748a95eb)'
-        st.markdown(link + ":clap::clap::clap: Tal!", unsafe_allow_html=True)
         with st.expander("See Wikipedia definition"):
             components.iframe("https://en.wikipedia.org/wiki/Emotion_recognition",
                               height=320, scrolling=True)
