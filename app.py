@@ -159,7 +159,7 @@ def main():
         st.image(side_img, width=300)
     st.sidebar.subheader("Menu")
     website_menu = st.sidebar.selectbox("Menu", ("Emotion Recognition", "Project description", "Our team", "Relax"))
-    st.set_option('deprecation.showfileUploaderEncoding', False)
+#     st.set_option('deprecation.showfileUploaderEncoding', False)
 
     if website_menu == "Emotion Recognition":
         # st.sidebar.subheader("Model")
@@ -409,11 +409,8 @@ def main():
             components.iframe("https://en.wikipedia.org/wiki/Emotion_recognition",
                               height=320, scrolling=True)
 
-        st.subheader("Dataset")
+        st.subheader("Datasets used here")
         txt = """
-            This web-application is a part of the final **Data Mining** project for **ITC Fellow Program 2020**. 
-
-            Datasets used in this project
             * Crowd-sourced Emotional Mutimodal Actors Dataset (**Crema-D**)
             * Ryerson Audio-Visual Database of Emotional Speech and Song (**Ravdess**)
             * Surrey Audio-Visual Expressed Emotion (**Savee**)
