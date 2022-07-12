@@ -35,9 +35,9 @@ TEST_CAT = ['fear', 'disgust', 'neutral', 'happy', 'sad', 'surprise', 'angry']
 TEST_PRED = np.array([.3, .3, .4, .1, .6, .9, .1])
 
 # page settings
-st.set_page_config(page_title="SER web-app", page_icon=":speech_balloon:", layout="wide")
-# COLOR = "#1f1f2e"
-# BACKGROUND_COLOR = "#d1d1e0"
+COLOR = "#1f1f2e"
+BACKGROUND_COLOR = "#d1d1e0"
+st.set_page_config(page_title="Vivence", page_icon=":speech_balloon:", layout="wide")
 
 
 # @st.cache(hash_funcs={tf_agents.utils.object_identity.ObjectIdentityDictionary: load_model})
@@ -158,17 +158,16 @@ def main():
     with st.sidebar:
         st.image(side_img, width=300)
     st.sidebar.subheader("Menu")
-    website_menu = st.sidebar.selectbox("Menu", ("Emotion Recognition", "Project description", "Our team",
-                                                 "Leave feedback", "Relax"))
+    website_menu = st.sidebar.selectbox("Menu", ("Emotion Recognition", "Project description", "Our team", "Relax"))
     st.set_option('deprecation.showfileUploaderEncoding', False)
 
     if website_menu == "Emotion Recognition":
-        st.sidebar.subheader("Model")
-        model_type = st.sidebar.selectbox("How would you like to predict?", ("mfccs", "mel-specs"))
+        # st.sidebar.subheader("Model")
+        model_type = "mfccs" #st.sidebar.selectbox("How would you like to predict?", ("mfccs", "mel-specs"))
         em3 = em6 = em7 = gender = False
         st.sidebar.subheader("Settings")
 
-        st.markdown("## Upload the file")
+        st.markdown("## Vivence - Speech Sandbox")
         with st.container():
             col1, col2 = st.columns(2)
             # audio_file = None
@@ -397,10 +396,10 @@ def main():
         import pandas as pd
         import plotly.express as px
         st.title("Project description")
-        st.subheader("GitHub")
-        link = '[GitHub repository of the web-application]' \
-               '(https://github.com/CyberMaryVer/speech-emotion-webapp)'
-        st.markdown(link, unsafe_allow_html=True)
+        # st.subheader("GitHub")
+        # link = '[GitHub repository of the web-application]' \
+        #        '(https://github.com/CyberMaryVer/speech-emotion-webapp)'
+        # st.markdown(link, unsafe_allow_html=True)
 
         st.subheader("Theory")
         link = '[Theory behind - Medium article]' \
@@ -426,51 +425,48 @@ def main():
         fig = px.violin(df, y="source", x="emotion4", color="actors", box=True, points="all", hover_data=df.columns)
         st.plotly_chart(fig, use_container_width=True)
 
-        st.subheader("FYI")
-        st.write("Since we are currently using a free tier instance of AWS, "
-                 "we disabled mel-spec and ensemble models.\n\n"
-                 "If you want to try them we recommend to clone our GitHub repo")
-        st.code("git clone https://github.com/CyberMaryVer/speech-emotion-webapp.git", language='bash')
+        # st.subheader("FYI")
+        # st.write("Since we are currently using a free tier instance of AWS, "
+        #          "we disabled mel-spec and ensemble models.\n\n"
+        #          "If you want to try them we recommend to clone our GitHub repo")
+        # st.code("git clone https://github.com/CyberMaryVer/speech-emotion-webapp.git", language='bash')
 
-        st.write("After that, just uncomment the relevant sections in the app.py file "
-                 "to use these models:")
+        # st.write("After that, just uncomment the relevant sections in the app.py file "
+        #          "to use these models:")
 
     elif website_menu == "Our team":
         st.subheader("Our team")
         st.balloons()
         col1, col2 = st.columns([3, 2])
         with col1:
-            st.info("maria.s.startseva@gmail.com")
-            st.info("talbaram3192@gmail.com")
-            st.info("asherholder123@gmail.com")
+            st.info("badrinarayanan.rangarajan@gmail.com")
+            st.info("coachvivence@gmail.com")
         with col2:
             liimg = Image.open("images/LI-Logo.png")
             st.image(liimg)
-            st.markdown(f""":speech_balloon: [Maria Startseva](https://www.linkedin.com/in/maria-startseva)""",
+            st.markdown(f""":speech_balloon: [Badrinarayanan](https://www.linkedin.com/in/rbadrinarayanan/)""",
                         unsafe_allow_html=True)
-            st.markdown(f""":speech_balloon: [Tal Baram](https://www.linkedin.com/in/tal-baram-b00b66180)""",
-                        unsafe_allow_html=True)
-            st.markdown(f""":speech_balloon: [Asher Holder](https://www.linkedin.com/in/asher-holder-526a05173)""",
+            st.markdown(f""":speech_balloon: [Vaidant](https://www.linkedin.com/in/vaidantjain/)""",
                         unsafe_allow_html=True)
 
-    elif website_menu == "Leave feedback":
-        st.subheader("Leave feedback")
-        user_input = st.text_area("Your feedback is greatly appreciated")
-        user_name = st.selectbox("Choose your personality", ["checker1", "checker2", "checker3", "checker4"])
+    # elif website_menu == "Leave feedback":
+    #     st.subheader("Leave feedback")
+    #     user_input = st.text_area("Your feedback is greatly appreciated")
+    #     user_name = st.selectbox("Choose your personality", ["checker1", "checker2", "checker3", "checker4"])
 
-        if st.button("Submit"):
-            st.success(f"Message\n\"\"\"{user_input}\"\"\"\nwas sent")
+    #     if st.button("Submit"):
+    #         st.success(f"Message\n\"\"\"{user_input}\"\"\"\nwas sent")
 
-            if user_input == "log123456" and user_name == "checker4":
-                with open("log0.txt", "r", encoding="utf8") as f:
-                    st.text(f.read())
-            elif user_input == "feedback123456" and user_name == "checker4":
-                with open("log.txt", "r", encoding="utf8") as f:
-                    st.text(f.read())
-            else:
-                log_file(user_name + " " + user_input)
-                thankimg = Image.open("images/sticky.png")
-                st.image(thankimg)
+    #         if user_input == "log123456" and user_name == "checker4":
+    #             with open("log0.txt", "r", encoding="utf8") as f:
+    #                 st.text(f.read())
+    #         elif user_input == "feedback123456" and user_name == "checker4":
+    #             with open("log.txt", "r", encoding="utf8") as f:
+    #                 st.text(f.read())
+    #         else:
+    #             log_file(user_name + " " + user_input)
+    #             thankimg = Image.open("images/sticky.png")
+    #             st.image(thankimg)
 
     else:
         import requests
